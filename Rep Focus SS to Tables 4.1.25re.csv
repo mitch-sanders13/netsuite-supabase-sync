@@ -1,0 +1,11 @@
+Internal ID,Type,Name/ID,Saved Search Type,Created By,Supabase Table,Method,Saved Search Date Window
+2019,Search,Wholesale Cash Sale Summary *Rep Focus* DND,Transaction,Mitch Sanders,cash_sales,upsert,Last 90 days
+2018,Search,Wholesale Credit Memo Summary *Rep Focus* DND,Transaction,Mitch Sanders,credit_memos,upsert,Last 90 days
+2009,Search,Wholesale Customers *Rep Focus* DND,Customer,Mitch Sanders,customers,upsert,All-Time
+2012,Search,Wholesale Invoices Detailed *Rep Focus* DND,Transaction,Mitch Sanders,invoices,upsert,Last 60 days
+2013,Search,Wholesale Invoices Summary *Rep Focus* DND,Transaction,Mitch Sanders,invoices-detailed,upsert,Last 365 days
+2015,Search,Wholesale Item Fulfillments Detailed *Rep Focus* DND,Transaction,Mitch Sanders,item-fulfillments,upsert,Last 60 days
+2014,Search,Wholesale Item Fulfillments Summary *Rep Focus* DND,Transaction,Mitch Sanders,item-fulfillments-detailed,upsert,Last 60 days
+2016,Search,Wholesale Partners *Rep Focus* DND,Partner,Mitch Sanders,partners,upsert,All-Time
+2011,Search,Wholesale Sales Orders Detailed *Rep Focus* DND,Transaction,Mitch Sanders,sales-data-detailed,upsert,Last 180 days
+2010,Search,Wholesale Sales Orders Summary *Rep Focus* DND,Transaction,Mitch Sanders,sales-data,upsert,Last 365 days

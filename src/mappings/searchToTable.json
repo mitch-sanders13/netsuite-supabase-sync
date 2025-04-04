@@ -1,0 +1,85 @@
+{
+  "mappings": [
+    {
+      "searchId": "2019",
+      "type": "Transaction",
+      "name": "Wholesale Cash Sale Summary *Rep Focus* DND",
+      "table": "cash_sales",
+      "method": "upsert",
+      "createdBy": "Mitch Sanders"
+    },
+    {
+      "searchId": "2018",
+      "type": "Transaction",
+      "name": "Wholesale Credit Memo Summary *Rep Focus* DND",
+      "table": "credit_memos",
+      "method": "upsert",
+      "createdBy": "Mitch Sanders"
+    },
+    {
+      "searchId": "2009",
+      "type": "Customer",
+      "name": "Wholesale Customers *Rep Focus* DND",
+      "table": "customers",
+      "method": "upsert",
+      "createdBy": "Mitch Sanders"
+    },
+    {
+      "searchId": "2012",
+      "type": "Transaction",
+      "name": "Wholesale Invoices Detailed *Rep Focus* DND",
+      "table": "invoices-detailed",
+      "method": "upsert",
+      "createdBy": "Mitch Sanders"
+    },
+    {
+      "searchId": "2013",
+      "type": "Transaction",
+      "name": "Wholesale Invoices Summary *Rep Focus* DND",
+      "table": "invoices",
+      "method": "upsert",
+      "createdBy": "Mitch Sanders"
+    },
+    {
+      "searchId": "2015",
+      "type": "Transaction",
+      "name": "Wholesale Item Fulfillments Detailed *Rep Focus* DND",
+      "table": "item-fulfillments-detailed",
+      "method": "upsert",
+      "createdBy": "Mitch Sanders"
+    },
+    {
+      "searchId": "2014",
+      "type": "Transaction",
+      "name": "Wholesale Item Fulfillments Summary *Rep Focus* DND",
+      "table": "item-fulfillments",
+      "method": "upsert",
+      "createdBy": "Mitch Sanders"
+    },
+    {
+      "searchId": "2016",
+      "type": "Partner",
+      "name": "Wholesale Partners *Rep Focus* DND",
+      "table": "partners",
+      "method": "upsert",
+      "dateWindow": "All-Time",
+      "createdBy": "Mitch Sanders"
+    },
+    {
+      "searchId": "2011",
+      "type": "Transaction",
+      "name": "Wholesale Sales Orders Detailed *Rep Focus* DND",
+      "table": "sales-data-detailed",
+      "method": "upsert",
+      "createdBy": "Mitch Sanders"
+    },
+    {
+      "searchId": "2010",
+      "type": "Transaction",
+      "name": "Wholesale Sales Orders Summary *Rep Focus* DND",
+      "table": "sales-orders",
+      "method": "upsert",
+      "createdBy": "Mitch Sanders"
+    }
+  ]
+} 

@@ -1,0 +1,587 @@
+Environment variables loaded:
+- NS_ACCOUNT_ID: 5427875
+- NS_CONSUMER_KEY: 37c2...
+- NS_CONSUMER_SECRET: 5422...
+- NS_TOKEN_ID: 4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec
+- NS_TOKEN_SECRET: 46ad...
+- NS_SCRIPT_ID: customscript1332
+- NS_DEPLOY_ID: customdeploy1
+- SUPABASE_URL: https://dbepakrnacxzqcwcalyx.supabase.co
+- SUPABASE_SERVICE_KEY: eyJh...
+Loaded 10 mappings from configuration
+Starting NetSuite to Supabase Sync Application
+=============================================
+Configuration:
+- Total mappings: 10
+=============================================
+
+Running initial sync...
+[2025-04-02T17:27:48.939Z] Starting NetSuite to Supabase sync process
+[2025-04-02T17:27:48.939Z] Total mappings to process: 10
+[2025-04-02T17:27:48.939Z] Validating NetSuite connection...
+Validating NetSuite credentials...
+Account ID: 5427875
+Script ID: customscript1332
+Deploy ID: customdeploy1
+Base URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl
+Testing with Saved Search ID: 2019
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2019&page=0
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743614868", oauth_nonce="tQMqCHLlNsghOcR7CDRSrQcErcwQXQO9", oauth_version="1.0", oauth_signature="8umMlEmsnbJgyt0vr2JJS4hy%2Bzb6idzi6CtmrJMjhM4%3D", realm="5427875"
+Scheduled sync to run every 21600 seconds
+Response status: 200
+NetSuite validation successful!
+[2025-04-02T17:27:58.974Z] Validating Supabase connection...
+[2025-04-02T17:27:59.101Z] Starting sync for Wholesale Cash Sale Summary *Rep Focus* DND (Transaction) to table cash_sales
+[2025-04-02T17:27:59.102Z] Using mapping configuration: {"searchId":"2019","type":"Transaction","name":"Wholesale Cash Sale Summary *Rep Focus* DND","table":"cash_sales","method":"upsert","createdBy":"Mitch Sanders"}
+[2025-04-02T17:27:59.199Z] Current record count in cash_sales: 24
+[2025-04-02T17:27:59.199Z] Fetching data from NetSuite Saved Search 2019...
+Fetching page 0 of Saved Search 2019...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2019&page=0
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743614879", oauth_nonce="eZZJWbfamaOQyoUwbpsvRAQbI6FUH79v", oauth_version="1.0", oauth_signature="RQHnxEs1GcjYBYTWhTG%2FntVjvzFVBQjWbaMjpYpPUNI%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 24 records (page 1 of 1)
+Total records retrieved from Saved Search 2019: 24
+[2025-04-02T17:28:08.766Z] Retrieved 24 records from NetSuite
+[2025-04-02T17:28:08.766Z] Field names in raw records: Internal ID, Date, Document Number, PO/Check Number, NuOrder Order #, Created From, Name, Amount, Status, Customer Internal ID, Sales Order Internal ID, Partner Internal ID
+[2025-04-02T17:28:08.766Z] Processing 24 records for cash_sales...
+[2025-04-02T17:28:08.766Z] Sample raw record structure for cash_sales: {
+  "Internal ID": "22650207",
+  "Date": "3/28/2025",
+  "Document Number": "CS1507175",
+  "PO/Check Number": "",
+  "NuOrder Order #": "196090022",
+  "Created From": "22647550",
+  "Name": "1797797",
+  "Amount": "435.00",
+  "Status": "notDeposited",
+  "Customer Internal ID": "1797797",
+  "Sales Order Internal ID": "22647550",
+  "Partner Internal ID": "1045"
+}
+[2025-04-02T17:28:08.766Z] Processed 24 records for cash_sales
+[2025-04-02T17:28:08.766Z] Sample processed record: {
+  "Internal ID": 22650207,
+  "Date": "3/28/2025",
+  "Document Number": "CS1507175",
+  "PO/Check Number": "",
+  "NuOrder Order #": "196090022",
+  "Created From": "22647550",
+  "Name": "1797797",
+  "Amount": 435,
+  "Status": "notDeposited",
+  "Customer Internal ID": 1797797,
+  "Sales Order Internal ID": 22647550,
+  "Partner Internal ID": 1045,
+  "timestamp": "2025-04-02T17:28:08.766Z"
+}
+[2025-04-02T17:28:08.766Z] Sample Internal ID: 22650207 (type: number)
+[2025-04-02T17:28:08.766Z] Upserting 24 records to cash_sales using "Internal ID" as conflict key...
+Starting upsert to cash_sales table with 24 records using conflict column: 'Internal ID'
+Splitting 24 records into 1 chunks of max 500 records each
+Processing chunk 1 of 1 (24 records)
+Successfully upserted chunk 1 with 24 records
+[2025-04-02T17:28:08.991Z] Sync completed for Wholesale Cash Sale Summary *Rep Focus* DND:
+[2025-04-02T17:28:08.991Z] - Records processed: 24
+[2025-04-02T17:28:08.991Z] - Records in table before: 24
+[2025-04-02T17:28:08.991Z] - Records in table after: 24
+[2025-04-02T17:28:08.991Z] Starting sync for Wholesale Credit Memo Summary *Rep Focus* DND (Transaction) to table credit_memos
+[2025-04-02T17:28:08.991Z] Using mapping configuration: {"searchId":"2018","type":"Transaction","name":"Wholesale Credit Memo Summary *Rep Focus* DND","table":"credit_memos","method":"upsert","createdBy":"Mitch Sanders"}
+[2025-04-02T17:28:09.076Z] Current record count in credit_memos: 688
+[2025-04-02T17:28:09.076Z] Fetching data from NetSuite Saved Search 2018...
+Fetching page 0 of Saved Search 2018...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2018&page=0
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743614889", oauth_nonce="8b4AESaS72L0zwNwKOYsz19vXuZweLxw", oauth_version="1.0", oauth_signature="TvQrizjRyuECgipXg98FfNKk%2FSUeDsmEQodyhSvuy7s%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 688 records (page 1 of 1)
+Total records retrieved from Saved Search 2018: 688
+[2025-04-02T17:28:28.261Z] Retrieved 688 records from NetSuite
+[2025-04-02T17:28:28.261Z] Field names in raw records: Internal ID, Date, Document Number, PO/Check Number, NuOrder Order #, Created From, Name, Amount, Status, Customer Internal ID, Sales Order Internal ID, Partner Internal ID
+[2025-04-02T17:28:28.261Z] Processing 688 records for credit_memos...
+[2025-04-02T17:28:28.261Z] Sample raw record structure for credit_memos: {
+  "Internal ID": "22662941",
+  "Date": "4/1/2025",
+  "Document Number": "CM44580",
+  "PO/Check Number": "GM1874",
+  "NuOrder Order #": "",
+  "Created From": "22473986",
+  "Name": "6224776",
+  "Amount": "-5960.00",
+  "Status": "applied",
+  "Customer Internal ID": "6224776",
+  "Sales Order Internal ID": "22473986",
+  "Partner Internal ID": "6099443"
+}
+[2025-04-02T17:28:28.266Z] Processed 688 records for credit_memos
+[2025-04-02T17:28:28.266Z] Sample processed record: {
+  "Internal ID": 22662941,
+  "Date": "4/1/2025",
+  "Document Number": "CM44580",
+  "PO/Check Number": "GM1874",
+  "NuOrder Order #": "",
+  "Created From": "22473986",
+  "Name": "6224776",
+  "Amount": -5960,
+  "Status": "applied",
+  "Customer Internal ID": 6224776,
+  "Sales Order Internal ID": "22473986",
+  "Partner Internal ID": 6099443,
+  "timestamp": "2025-04-02T17:28:28.262Z"
+}
+[2025-04-02T17:28:28.266Z] Sample Internal ID: 22662941 (type: number)
+[2025-04-02T17:28:28.266Z] Upserting 688 records to credit_memos using "Internal ID" as conflict key...
+Starting upsert to credit_memos table with 688 records using conflict column: 'Internal ID'
+Splitting 688 records into 2 chunks of max 500 records each
+Processing chunk 1 of 2 (500 records)
+Successfully upserted chunk 1 with 500 records
+Processing chunk 2 of 2 (188 records)
+Successfully upserted chunk 2 with 188 records
+[2025-04-02T17:28:28.709Z] Sync completed for Wholesale Credit Memo Summary *Rep Focus* DND:
+[2025-04-02T17:28:28.709Z] - Records processed: 688
+[2025-04-02T17:28:28.709Z] - Records in table before: 688
+[2025-04-02T17:28:28.709Z] - Records in table after: 688
+[2025-04-02T17:28:28.709Z] Starting sync for Wholesale Customers *Rep Focus* DND (Customer) to table customers
+[2025-04-02T17:28:28.709Z] Using mapping configuration: {"searchId":"2009","type":"Customer","name":"Wholesale Customers *Rep Focus* DND","table":"customers","method":"upsert","createdBy":"Mitch Sanders"}
+[2025-04-02T17:28:28.837Z] Current record count in customers: 1347
+[2025-04-02T17:28:28.837Z] Fetching data from NetSuite Saved Search 2009...
+Fetching page 0 of Saved Search 2009...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2009&page=0
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743614908", oauth_nonce="i30epTmJ1B5xE5TiuIPLY97UeZzsoxQE", oauth_version="1.0", oauth_signature="%2BhCLByokFP22qF5znsQ845VN1I%2FV%2FyGPdfNnDXHt4rQ%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 1 of 2)
+Fetching page 1 of Saved Search 2009...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2009&page=1
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743614910", oauth_nonce="RNF49SL5P4qJbiwtVuhwZB8SVo30hftl", oauth_version="1.0", oauth_signature="IAm39GEKYBUzCsFb1jfNjdBZBLA41iSAvcvfmTlP69w%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 347 records (page 2 of 2)
+Total records retrieved from Saved Search 2009: 1347
+[2025-04-02T17:28:30.706Z] Retrieved 1347 records from NetSuite
+[2025-04-02T17:28:30.706Z] Field names in raw records: Number, Company Name, Terms, Partner, Wholesale Customer Segment, Price Level, Account Rating, Email, Phone, Sales Rep Name, Partner Internal ID, Sales Rep Email, TW | Email of Primary Contact, TW | Email of Billing Contact, TW | Email of Billing Contact 2, Primary Currency, Hold Orders for CC Info, AR Red Flag
+[2025-04-02T17:28:30.706Z] Processing 1347 records for customers...
+[2025-04-02T17:28:30.706Z] Sample raw record structure for customers: {
+  "Number": "6",
+  "Company Name": "Fargo Scheels",
+  "Terms": "2",
+  "Partner": "6215873",
+  "Wholesale Customer Segment": "3",
+  "Price Level": "4",
+  "Account Rating": "1",
+  "Email": "ordersfa@scheels.com",
+  "Phone": "+17012982918",
+  "Sales Rep Name": "Melinda Perry : Scheels",
+  "Partner Internal ID": "6215873",
+  "Sales Rep Email": "melinda@threadwallets.com",
+  "TW | Email of Primary Contact": "ordersfa@scheels.com",
+  "TW | Email of Billing Contact": "co_ap@scheels.com",
+  "TW | Email of Billing Contact 2": "",
+  "Primary Currency": "1",
+  "Hold Orders for CC Info": false,
+  "AR Red Flag": false
+}
+[2025-04-02T17:28:30.710Z] Processed 1347 records for customers
+[2025-04-02T17:28:30.710Z] Sample processed record: {
+  "Internal ID": 1,
+  "Number": 6,
+  "Company Name": "Fargo Scheels",
+  "Terms": "2",
+  "Partner": "6215873",
+  "Wholesale Customer Segment": "3",
+  "Price Level": "4",
+  "Account Rating": "1",
+  "Email": "ordersfa@scheels.com",
+  "Phone": "+17012982918",
+  "Default Billing Address": "",
+  "Default Shipping Address": "",
+  "Sales Rep Name": "Melinda Perry : Scheels",
+  "Sales Rep Email": "melinda@threadwallets.com",
+  "TW | Email of Primary Contact": "ordersfa@scheels.com",
+  "TW | Email of Billing Contact": "co_ap@scheels.com",
+  "TW | Email of Billing Contact 2": "",
+  "Primary Currency": "1",
+  "Hold Orders for CC Info": "",
+  "AR Red Flag": "",
+  "Partner Internal ID": 6215873,
+  "timestamp": "2025-04-02T17:28:30.706Z"
+}
+[2025-04-02T17:28:30.710Z] Sample Internal ID: 1 (type: number)
+[2025-04-02T17:28:30.710Z] Upserting 1347 records to customers using "Internal ID" as conflict key...
+Starting upsert to customers table with 1347 records using conflict column: 'Internal ID'
+Splitting 1347 records into 3 chunks of max 500 records each
+Processing chunk 1 of 3 (500 records)
+Successfully upserted chunk 1 with 500 records
+Processing chunk 2 of 3 (500 records)
+Successfully upserted chunk 2 with 500 records
+Processing chunk 3 of 3 (347 records)
+Successfully upserted chunk 3 with 347 records
+[2025-04-02T17:28:31.555Z] Sync completed for Wholesale Customers *Rep Focus* DND:
+[2025-04-02T17:28:31.555Z] - Records processed: 1347
+[2025-04-02T17:28:31.555Z] - Records in table before: 1347
+[2025-04-02T17:28:31.555Z] - Records in table after: 1347
+[2025-04-02T17:28:31.555Z] Starting sync for Wholesale Invoices Detailed *Rep Focus* DND (Transaction) to table invoices-detailed
+[2025-04-02T17:28:31.555Z] Using mapping configuration: {"searchId":"2012","type":"Transaction","name":"Wholesale Invoices Detailed *Rep Focus* DND","table":"invoices-detailed","method":"upsert","createdBy":"Mitch Sanders"}
+[2025-04-02T17:28:31.680Z] Current record count in invoices-detailed: 0
+[2025-04-02T17:28:31.680Z] Fetching data from NetSuite Saved Search 2012...
+Fetching page 0 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=0
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743614911", oauth_nonce="eBDwhu7aiwx71RTdDQklyBqqab34ZKQS", oauth_version="1.0", oauth_signature="agYpv7UWqVhYcQwf8ESKxwtn5%2FCc2gT89ZbNrVWn%2Bd4%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 1 of 327)
+Fetching page 1 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=1
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743614936", oauth_nonce="awbbeUBn6aPbNrGrkuaMMhYQQfQyeCr1", oauth_version="1.0", oauth_signature="b56iYdYL3gU5FjBCFCSM9hBDdzELLgkwv8gJ86qXOBk%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 2 of 327)
+Fetching page 2 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=2
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743614961", oauth_nonce="pt6DhXvpCFi3hvNQjMYYlV9Ylo8HkGJ8", oauth_version="1.0", oauth_signature="n%2FacIwHwt4wpost0Ag8oNPdST%2Fap89zHkcSQ8APF9Ig%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 3 of 327)
+Fetching page 3 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=3
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743614985", oauth_nonce="KIzLCZ8xCPoiEJvMMHVZ6tfDbgYBOVLw", oauth_version="1.0", oauth_signature="EdAP4bmSwggiEKYUJNjYF%2B%2BZqkX6ODmolkuFtfuY3Lk%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 4 of 327)
+Fetching page 4 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=4
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615009", oauth_nonce="7Itr98xEv8i9Bu5lm9oQ6iAuMzjCrmT4", oauth_version="1.0", oauth_signature="fUXZHrsSv4cKnUXy%2F15bn2AgXfV8eBJoeuKwyumAjpo%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 5 of 327)
+Fetching page 5 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=5
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615033", oauth_nonce="1e9P2hSyPezAGh1yGcTmkfoMjGRQkSlA", oauth_version="1.0", oauth_signature="6RazZ1xzOARWVDGfWq4Ihmf5JmDnhiLSqt5QRQfbOvg%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 6 of 327)
+Fetching page 6 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=6
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615059", oauth_nonce="S2T9SdXtim9WGhT8sicXGpRmyJOhsBJT", oauth_version="1.0", oauth_signature="xt59HUCY5iU3D7veh7TkDHDhlBFV2Cm%2F3hUXW6EHTaI%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 7 of 327)
+Fetching page 7 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=7
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615084", oauth_nonce="Q9L1cEpp0rcwqZO0MIkHVccjETiEqkor", oauth_version="1.0", oauth_signature="l3saYBbjbhgM9QzPhjURIjTAPf2Qga4t6FVqfiWKD9g%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 8 of 327)
+Fetching page 8 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=8
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615110", oauth_nonce="sdRfjj4yFhh5D4NYby6XJ51TMXCI6QLi", oauth_version="1.0", oauth_signature="nnw0%2F1LPZn22H6MKbJkzilK6BYRhjJixSUOc5N5Z3Yc%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 9 of 327)
+Fetching page 9 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=9
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615136", oauth_nonce="Ada2T1JmpYVDbewjmXXFURKwCj0iznkP", oauth_version="1.0", oauth_signature="gKCm%2FPKGdk2k6bojcxNSemN%2FhN8MXr4pdBiKoyOowIs%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 10 of 327)
+Fetching page 10 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=10
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615162", oauth_nonce="Gvjj4twehBuzcTGnn0xPpNbqJjRnzEyU", oauth_version="1.0", oauth_signature="RiKO3PjIdOJ2sl7qQ3RxtfFhepIErsT%2BF0EUCnQKteM%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 11 of 327)
+Fetching page 11 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=11
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615187", oauth_nonce="yqtf5oWma2b0kfvqVyynlcgEDNIRyZw0", oauth_version="1.0", oauth_signature="nPBKzhWLibxb58A8g%2BIGlGX%2BxyfupN4Ttm2t9WLFSlQ%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 12 of 327)
+Fetching page 12 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=12
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615215", oauth_nonce="BNCol44E9Vv93mO11psyIjAcv56DjOdc", oauth_version="1.0", oauth_signature="DCXWEQL%2FGGrHWIjE6lfbM7x8ELBMELsYMmrIxy%2FnvpU%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 13 of 327)
+Fetching page 13 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=13
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615242", oauth_nonce="0owSP3uGLH4eHTfjLW6Hs0oFpXGh63Ws", oauth_version="1.0", oauth_signature="gub9SYuImH%2FpxuXHbicgxuM%2BSJMYAqP92mj%2FENzs7Bs%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 14 of 327)
+Fetching page 14 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=14
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615267", oauth_nonce="4VyCWAunQcaRo4QSZWSC1oTqa14cil9m", oauth_version="1.0", oauth_signature="ZlyriRWGq7aTy8DcFFLW90ByaKSmuTbFh4UdbhPfCrI%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 15 of 327)
+Fetching page 15 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=15
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615293", oauth_nonce="u3BxobW8FWEqbvSk4xA9YxwhwYXFU7zR", oauth_version="1.0", oauth_signature="bjOT4ThwZBArbezpgnYBcggDk%2BfWZrww%2FJPCO7Czhc4%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 16 of 327)
+Fetching page 16 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=16
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615319", oauth_nonce="SVGyv1uejbS8BQNiKDEBxrCpwf8nZaxX", oauth_version="1.0", oauth_signature="qWAIu20fb8G9w43h%2BG%2FKPBDcEtA8cLuugZoNP9I2rUI%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 17 of 327)
+Fetching page 17 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=17
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615344", oauth_nonce="xZbFBAJLHd1YF1HehUtFGWIShLfAw4R0", oauth_version="1.0", oauth_signature="gsazz3K3VoiXWKTqV9wsq99QYaWamuYSXqV34i7PWuc%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 18 of 327)
+Fetching page 18 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=18
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615369", oauth_nonce="XFC0PQpFPb9JMaTfT5PcCucffC9wxVUC", oauth_version="1.0", oauth_signature="0L4HNGoWg%2B%2FAM1Iy3H5kSARVTmR%2B0SROmYlgWV2MbgA%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 19 of 327)
+Fetching page 19 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=19
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615395", oauth_nonce="fjFRaunHPh2utRttkfLmePqUtyLnKfq1", oauth_version="1.0", oauth_signature="L%2FNqvfkQ1IAyCYHGEmhI6uWGnMaCKD0frcSpP3IXfvE%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 20 of 327)
+Fetching page 20 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=20
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615421", oauth_nonce="KLBS7Xmv1nZexqLDM5TguuH6RmadEXQ0", oauth_version="1.0", oauth_signature="tcaiEhlByqe%2FQd9rzibST2gsdWIov0Wqr4sLkfPINyc%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 21 of 327)
+Fetching page 21 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=21
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615446", oauth_nonce="q0imAR3GUKUTtKBhpRQmk6yy7SeocFvd", oauth_version="1.0", oauth_signature="RcOfTs44ML4M2%2F%2FqlI9K8qsi7ZiHoMaFg28onheQphw%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 22 of 327)
+Fetching page 22 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=22
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615470", oauth_nonce="WepIpGS58NvVQyOEVBJZSFXyZ2pSJgpc", oauth_version="1.0", oauth_signature="zbqsyU%2Bpy8z8VJxT2XPE9U8J6Vtv9wkJASH14ii9Y1Q%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 23 of 327)
+Fetching page 23 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=23
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615496", oauth_nonce="e1hoNfyzLq71hkPGJKSHFw8ihzlyFzRO", oauth_version="1.0", oauth_signature="z9qgm3c2rtDVuJ545mNYdYeu46m%2FRNmwQPogYtR7kWs%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 24 of 327)
+Fetching page 24 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=24
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615522", oauth_nonce="WD2Wpl4r0eZOYHl8DAexxPEmx7PmIBFJ", oauth_version="1.0", oauth_signature="l18vgET3YiUPUMXC3PWQUqNE9XRlqpN0hm%2FXGSqvEzA%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 25 of 327)
+Fetching page 25 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=25
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615548", oauth_nonce="at4Kg1b54aiOkYwUdTVt88KAwOW8l7pS", oauth_version="1.0", oauth_signature="mgChuqovUOIskYwkGtjcL49JfJuspy0ts%2B6RG0btV1Y%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 26 of 327)
+Fetching page 26 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=26
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615574", oauth_nonce="Fd1wnlYKCwc9O2x2u3EBH2zrjGGZ3eU4", oauth_version="1.0", oauth_signature="0cz1ZyAHrxxiu8j%2FgVka2ohdP3uzs578PXs2NQsrdJ4%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 27 of 327)
+Fetching page 27 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=27
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615600", oauth_nonce="8E6NlgRh4C3Z71g6djKH03l4U4B7cWww", oauth_version="1.0", oauth_signature="IIj401P0PMszPfe6x3WmsE0bVFiKHN5xT%2FsE8CmL5Cw%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 28 of 327)
+Fetching page 28 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=28
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615626", oauth_nonce="in9kO69ZZtZbIdqj6N1biuiYeGtQrsKn", oauth_version="1.0", oauth_signature="Lex7IgUUbGPfec0qAo3c2gfmjsxeWlZS1vayWNyQGxI%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 29 of 327)
+Fetching page 29 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=29
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615652", oauth_nonce="5taOkJ2Sm5nWrupuXNWPHMjz2GKqEzLR", oauth_version="1.0", oauth_signature="jKwaVEiNEt1LkU4xJDCkqN%2BG2RBKbY9XRy9cZqCMLPA%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 30 of 327)
+Fetching page 30 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=30
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615678", oauth_nonce="XdgI2wkNhdUJ0PtPZEweqe4NjdmjrTwu", oauth_version="1.0", oauth_signature="exes2PXoLF156JWeshzTAyvfHskrK97jBc%2Bu4DasG4c%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 31 of 327)
+Fetching page 31 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=31
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615707", oauth_nonce="RnPfaVZo6NNxVfIf7tlXfkyV3ixe65zR", oauth_version="1.0", oauth_signature="1s91edQXyOyd3%2BTSa6DPQnl4DXqgtywl7Dl3RvjxqiI%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 32 of 327)
+Fetching page 32 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=32
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615733", oauth_nonce="Ots5D3iFuh3Gd8oq1I16N1aE9aSqsVC5", oauth_version="1.0", oauth_signature="YhEEFDdIh%2BWnwiHnfjnr5432trP%2FHHyCtNRP9CgUcrQ%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 33 of 327)
+Fetching page 33 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=33
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615761", oauth_nonce="7XqHmsZaFHTCPBXTTSMwTwW8L5e9LJJS", oauth_version="1.0", oauth_signature="PPHf4BNtIj2zOJ1EuzAtOxe%2BPXnv%2Bzy0QBx6NctkzfM%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 34 of 327)
+Fetching page 34 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=34
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615787", oauth_nonce="v1nFbzeOuE7awh2KxSdkBP3AWKEfmQUN", oauth_version="1.0", oauth_signature="ve72xojneHJ845gRsnm60HRtYpFZFJtFmbF5Mgs7nsA%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 35 of 327)
+Fetching page 35 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=35
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615813", oauth_nonce="n6qc4UAOPKkbMUrivugasYlm6ojFt89O", oauth_version="1.0", oauth_signature="NrBQhhlWPw4S2xOFZoTqqr10K5iuaFO96mRVE2ou%2FbE%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 36 of 327)
+Fetching page 36 of Saved Search 2012...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2012&page=36
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615840", oauth_nonce="511BA9nanJUtDvYXJH3Ch4yWeMa2mn9C", oauth_version="1.0", oauth_signature="e7oGBa1l3D131JYEi5dPVrGignTAr%2B1YymGW8sie03Q%3D", realm="5427875"
+[2025-04-02T17:44:30.693Z] ERROR: Failed to sync Wholesale Invoices Detailed *Rep Focus* DND to invoices-detailed
+[2025-04-02T17:44:30.695Z] Starting sync for Wholesale Invoices Summary *Rep Focus* DND (Transaction) to table invoices
+[2025-04-02T17:44:30.695Z] Using mapping configuration: {"searchId":"2013","type":"Transaction","name":"Wholesale Invoices Summary *Rep Focus* DND","table":"invoices","method":"upsert","createdBy":"Mitch Sanders"}
+[2025-04-02T17:44:31.066Z] Current record count in invoices: 0
+[2025-04-02T17:44:31.066Z] Fetching data from NetSuite Saved Search 2013...
+Fetching page 0 of Saved Search 2013...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2013&page=0
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615871", oauth_nonce="JTI5XodfMgOVheZVEOSHvE7bsoxkgqs6", oauth_version="1.0", oauth_signature="3UV7lEClWTEH8uTKEuC2wQSQUyR%2FvkL6j7Fpi9QHXYM%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 1 of 14)
+Fetching page 1 of Saved Search 2013...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2013&page=1
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615881", oauth_nonce="j4p4DKGTOaGRGtirPdKZJ3DIkOtFRLYm", oauth_version="1.0", oauth_signature="r2d3ADJpP4Rs48lB27B5KDA1p1dh6AdR%2FQIxN1H29Yc%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 2 of 14)
+Fetching page 2 of Saved Search 2013...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2013&page=2
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615892", oauth_nonce="AB0f0SgLaWtxuGtrlv82IQ7VQOkwLgNV", oauth_version="1.0", oauth_signature="Pn4VZ83oq4P5aohZi0Jc7LvTticEkLvKcA%2BVhYoF1rM%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 3 of 14)
+Fetching page 3 of Saved Search 2013...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2013&page=3
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615902", oauth_nonce="zCRBbHoYMDXZVLedEBmKMBgIltliZ7tV", oauth_version="1.0", oauth_signature="GmteONEy2lP1EfL2ZmMRJnTkQykPqNn%2FCicRNQ%2F47fc%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 4 of 14)
+Fetching page 4 of Saved Search 2013...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2013&page=4
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615913", oauth_nonce="ZuWelKZXM1jbPhULLVWI1BPAC3GE0RBV", oauth_version="1.0", oauth_signature="cDcNCOO6uxHy3R2p2SjFtWGVOfkVUya7GCpODPNmqtY%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 5 of 14)
+Fetching page 5 of Saved Search 2013...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2013&page=5
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615925", oauth_nonce="O3vWRTynbYyvbKgG9wCIkrcfNBDWWWiw", oauth_version="1.0", oauth_signature="4rJgo4%2FMMfEEpE25gAc4G2ea5sn9zdyPPAMRyiNlqTs%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 6 of 14)
+Fetching page 6 of Saved Search 2013...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2013&page=6
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615936", oauth_nonce="nWQqCXx0KnNnzoio2fDySFDXOGWanGcT", oauth_version="1.0", oauth_signature="LZ8mEZZ8HVHQKUUF6VGsxEsVD0tCWabfefDOzRw5WBo%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 7 of 14)
+Fetching page 7 of Saved Search 2013...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2013&page=7
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615946", oauth_nonce="r8MnSaLaT80MQung5wW971OFEKL1qElH", oauth_version="1.0", oauth_signature="ZWNrUycqnTjVQOgbgXsWOtb2u3Ina2%2BLy9Hd66BzwY0%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 8 of 14)
+Fetching page 8 of Saved Search 2013...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2013&page=8
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615958", oauth_nonce="SXJFVSz10vSgEr4qQKL0cc5g2u3jyQbK", oauth_version="1.0", oauth_signature="yEDTMhapU8NyWr3vwPzO8L%2Bpy0ejcQxb%2FVIIYeQ4ajY%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 9 of 14)
+Fetching page 9 of Saved Search 2013...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2013&page=9
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615968", oauth_nonce="XcM3upJffDgeYkfQxA9uhu2JrATve9ki", oauth_version="1.0", oauth_signature="cGvOzYhark9YUo86mVKzW5csLZy2GRcQUkdbZTb2wxY%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 10 of 14)
+Fetching page 10 of Saved Search 2013...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2013&page=10
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615979", oauth_nonce="npZS2aQM9OI4Jj78gGD3KbA1xM8zfOrc", oauth_version="1.0", oauth_signature="etUswcy6aCercH1fz7lUoPOHzU08fm1cOu3z8QP8Z2E%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 11 of 14)
+Fetching page 11 of Saved Search 2013...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2013&page=11
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743615990", oauth_nonce="L0pQtV9oe6Ouom3JCWA7MT5WBuHSr3zm", oauth_version="1.0", oauth_signature="lIKo9ovVktnyGBhmGppmY6s6mtVEJ3QNpaglDtSiUfg%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 12 of 14)
+Fetching page 12 of Saved Search 2013...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2013&page=12
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743616001", oauth_nonce="4mfpWxDxbvYbPhJtqn1JqgJT2WRRUjrl", oauth_version="1.0", oauth_signature="lyLYF7QCkBHOXEKTRr%2FiAm%2BTDFTSHRVMs%2BxSGWV22nE%3D", realm="5427875"
+Response status: 200
+Response received, parsing...
+Retrieved 1000 records (page 13 of 14)
+Fetching page 13 of Saved Search 2013...
+Making request to NetSuite:
+URL: https://5427875.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=customscript1332&deploy=customdeploy1&searchId=2013&page=13
+Authorization Header: OAuth oauth_consumer_key="37c2ed3235091eb621e5bdc21e9008b2b3588b3b7ad71ad4d1d3f666b807b67d", oauth_token="4caf259e156cdf713954bf139d1761039eda46ef1f64e1b1f9a292222d6763ec", oauth_signature_method="HMAC-SHA256", oauth_timestamp="1743616013", oauth_nonce="t0vwD1kxuMthpb5MRjTvLCtsRtw7f99s", oauth_version="1.0", oauth_signature="odFuvS2M1J2ap3cZIUn%2F%2BB3azAiogqP10Kg6j226pjQ%3D", realm="5427875"
