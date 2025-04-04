@@ -3,10 +3,17 @@ const config = require('./config');
 
 /**
  * Runs the sync process and handles any uncaught errors
+ * @returns {Promise<void>}
  */
 async function runSyncProcess() {
   try {
     await syncManager.runSync();
+    
+    // If run with --once flag, exit after completion
+    if (process.argv.includes('--once')) {
+      console.log('Sync completed. Exiting...');
+      process.exit(0);
+    }
   } catch (error) {
     console.error('Fatal error in sync process:', error);
     process.exit(1);
@@ -24,13 +31,16 @@ function scheduleSync() {
   console.log('Running initial sync...');
   runSyncProcess();
 
-  // Schedule subsequent runs
-  setInterval(() => {
-    console.log(`Running scheduled sync (every ${interval / 1000} seconds)...`);
-    runSyncProcess();
-  }, interval);
+  // If not running with --once flag, schedule subsequent runs
+  if (!process.argv.includes('--once')) {
+    // Schedule subsequent runs
+    setInterval(() => {
+      console.log(`Running scheduled sync (every ${interval / 1000} seconds)...`);
+      runSyncProcess();
+    }, interval);
 
-  console.log(`Scheduled sync to run every ${interval / 1000} seconds`);
+    console.log(`Scheduled sync to run every ${interval / 1000} seconds`);
+  }
 }
 
 // Handle process termination gracefully

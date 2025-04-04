@@ -6,7 +6,7 @@ A Node.js application that synchronizes data from NetSuite Saved Searches to Sup
 
 - Fetches data from NetSuite Saved Searches via RESTlet
 - Upserts data into corresponding Supabase tables
-- Runs on a configurable schedule (default: every 6 hours)
+- Runs on a configurable schedule (default: every 6 hours) or as a one-time job
 - Handles pagination and large datasets
 - Secure credential management
 
@@ -42,16 +42,30 @@ Edit `src/mappings/searchToTable.json` to map NetSuite Saved Search IDs to Supab
 
 ## Usage
 
-### Development
+### Development (continuous mode)
 
 ```bash
 npm run dev
 ```
 
-### Production
+### Production (continuous mode)
 
 ```bash
 npm start
+```
+
+### Run Once and Exit
+
+To run the sync process once and then exit (useful for cron jobs or scheduled tasks):
+
+```bash
+npm run once
+```
+
+or
+
+```bash
+node src/index.js --once
 ```
 
 ## Project Structure
