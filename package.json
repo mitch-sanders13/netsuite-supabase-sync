@@ -2,18 +2,20 @@
   "name": "netsuite-supabase-sync",
   "version": "1.0.0",
   "description": "Synchronizes data from NetSuite Saved Searches to Supabase tables",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
     "once": "node src/index.js --once",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:lambda": "mkdir -p lambda-package && cp -r src package.json index.js .env* lambda-package/ && cd lambda-package && npm install --production && zip -r ../function.zip ."
   },
   "keywords": [
     "netsuite",
     "supabase",
     "sync",
-    "integration"
+    "integration",
+    "aws-lambda"
   ],
   "author": "",
   "license": "ISC",
@@ -26,5 +28,8 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.9"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   }
 }
