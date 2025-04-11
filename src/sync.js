@@ -180,7 +180,8 @@ class SyncManager {
             "Sales Order Internal ID": parseId(record['Sales Order Internal ID']),
             "Payment Link": record['Payment Link'] || '',
             "Partner Internal ID": parseId(record['Partner Internal ID']),
-            "timestamp": new Date().toISOString()
+            "timestamp": new Date().toISOString(),
+            "Due Date":  record['Due Date'] || '',
           };
         });
         
