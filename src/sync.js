@@ -58,7 +58,17 @@ class SyncManager {
       await netsuiteClient.validateCredentials();
       
       this.log('Validating Supabase connection...');
-      await supabaseClient.validateConnection();
+      
+      // Ensure we have at least one mapping to validate against
+      if (!config.mappings || config.mappings.length === 0) {
+        throw new Error('No mappings found for validation');
+      }
+      
+      // Use the first mapping for validation
+      const firstMapping = config.mappings[0];
+      this.log(`Using first mapping table "${firstMapping.table}" for Supabase connection validation`);
+      
+      await supabaseClient.validateConnection(firstMapping);
       
       return true;
     } catch (error) {

@@ -1,4 +1,8 @@
-require('dotenv').config();
+// Load environment variables if not in Lambda environment
+if (!process.env.AWS_LAMBDA_FUNCTION_NAME) {
+  require('dotenv').config();
+}
+
 const fs = require('fs');
 const path = require('path');
 
@@ -64,24 +68,6 @@ function loadMappings() {
   }
 }
 
-// NetSuite configuration
-const netsuiteConfig = {
-  accountId: process.env.NS_ACCOUNT_ID,
-  consumerKey: process.env.NS_CONSUMER_KEY,
-  consumerSecret: process.env.NS_CONSUMER_SECRET,
-  tokenId: process.env.NS_TOKEN_ID,
-  tokenSecret: process.env.NS_TOKEN_SECRET,
-  scriptId: process.env.NS_SCRIPT_ID,
-  deployId: process.env.NS_DEPLOY_ID,
-  baseUrl: `https://${process.env.NS_ACCOUNT_ID}.restlets.api.netsuite.com/app/site/hosting/restlet.nl`
-};
-
-// Supabase configuration
-const supabaseConfig = {
-  url: process.env.SUPABASE_URL,
-  serviceKey: process.env.SUPABASE_SERVICE_KEY
-};
-
 // Initialize configuration
 function init() {
   // Validate environment variables
@@ -93,8 +79,7 @@ function init() {
   console.log(`Loaded ${mappings.length} mappings from configuration`);
   
   return {
-    netsuite: netsuiteConfig,
-    supabase: supabaseConfig,
+    // We don't create config objects anymore - just expose the mappings
     mappings: mappings,
     syncInterval: parseInt(process.env.SYNC_INTERVAL || '21600000', 10) // Default to 6 hours
   };
