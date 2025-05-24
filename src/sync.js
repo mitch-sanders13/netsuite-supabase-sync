@@ -4,9 +4,9 @@ const config = require('./config');
 
 // Tables that require page-by-page processing due to large data volumes
 const PAGINATED_TABLES = new Set([
-  'invoices-detailed',
-  'item-fulfillments-detailed',
-  'sales-data-detailed'
+  'invoices_detailed',
+  'item_fulfillments_detailed',
+  'sales_orders_detailed'
 ]);
 
 function requiresPagination(table) {
@@ -111,18 +111,18 @@ class SyncManager {
       case 'cash_sales':
         return rawRecords.map((record, index) => {
           return {
-            "Internal ID": parseId(record['Internal ID']),
-            "Date": record.Date || null,
-            "Document Number": record['Document Number'] || '',
-            "PO/Check Number": record['PO/Check Number'] || '',
-            "NuOrder Order #": record['NuOrder Order #'] || '',
-            "Created From": record['Created From'] || '',
-            "Name": record.Name || '',
-            "Amount": parseNumber(record.Amount),
-            "Status": record.Status || '',
-            "Customer Internal ID": parseId(record['Customer Internal ID']),
-            "Sales Order Internal ID": parseId(record['Sales Order Internal ID']),
-            "Partner Internal ID": parseId(record['Partner Internal ID']),
+            "cash_sale_internal_id": parseId(record['cash_sale_internal_id']) || index + 1,
+            "date": record['date'] || null,
+            "document_number": record['document_number'] || '',
+            "po_number": record['po_number'] || '',
+            "nuorder_order_number": record['nuorder_order_number'] || '',
+            "created_from": record['created_from'] || '',
+            "name": record['name'] || '',
+            "amount": parseNumber(record['amount']),
+            "status": record['status'] || '',
+            "customer_internal_id": parseId(record['customer_internal_id']),
+            "sales_order_internal_id": parseId(record['sales_order_internal_id']),
+            "partner_internal_id": parseId(record['partner_internal_id']),
             "timestamp": new Date().toISOString()
           };
         });
@@ -130,18 +130,18 @@ class SyncManager {
       case 'credit_memos':
         return rawRecords.map((record, index) => {
           return {
-            "Internal ID": parseId(record['Internal ID']),
-            "Date": record.Date || null,
-            "Document Number": record['Document Number'] || '',
-            "PO/Check Number": record['PO/Check Number'] || '',
-            "NuOrder Order #": record['NuOrder Order #'] || '',
-            "Created From": record['Created From'] || '',
-            "Name": record.Name || '',
-            "Amount": parseNumber(record.Amount),
-            "Status": record.Status || '',
-            "Customer Internal ID": parseId(record['Customer Internal ID']),
-            "Sales Order Internal ID": record['Sales Order Internal ID'] || '', // String in Supabase
-            "Partner Internal ID": parseId(record['Partner Internal ID']),
+            "credit_memo_internal_id": parseId(record['credit_memo_internal_id']) || index + 1,
+            "date": record['date'] || null,
+            "document_number": record['document_number'] || '',
+            "po_number": record['po_number'] || '',
+            "nuorder_order_number": record['nuorder_order_number'] || '',
+            "created_from": record['created_from'] || '',
+            "name": record['name'] || '',
+            "amount": parseNumber(record['amount']),
+            "status": record['status'] || '',
+            "customer_internal_id": parseId(record['customer_internal_id']),
+            "sales_order_internal_id": record['sales_order_internal_id'] || '', // String in Supabase
+            "partner_internal_id": parseId(record['partner_internal_id']),
             "timestamp": new Date().toISOString()
           };
         });
@@ -149,27 +149,25 @@ class SyncManager {
       case 'customers':
         return rawRecords.map((record, index) => {
           return {
-            "Internal ID": parseId(record['Internal ID']) || index + 1,
-            "Number": parseId(record['Number']),
-            "Company Name": record['Company Name'] || '',
-            "Terms": record['Terms'] || '',
-            "Partner": record['Partner'] || '',
-            "Wholesale Customer Segment": record['Wholesale Customer Segment'] || '',
-            "Price Level": record['Price Level'] || '',
-            "Account Rating": record['Account Rating'] || '',
-            "Email": record['Email'] || '',
-            "Phone": record['Phone'] || '',
-            "Default Billing Address": record['Default Billing Address'] || '',
-            "Default Shipping Address": record['Default Shipping Address'] || '',
-            "Sales Rep Name": record['Sales Rep Name'] || '',
-            "Sales Rep Email": record['Sales Rep Email'] || '',
-            "TW | Email of Primary Contact": record['TW | Email of Primary Contact'] || '',
-            "TW | Email of Billing Contact": record['TW | Email of Billing Contact'] || '',
-            "TW | Email of Billing Contact 2": record['TW | Email of Billing Contact 2'] || '',
-            "Primary Currency": record['Primary Currency'] || '',
-            "Hold Orders for CC Info": record['Hold Orders for CC Info'] || '',
-            "AR Red Flag": record['AR Red Flag'] || '',
-            "Partner Internal ID": parseId(record['Partner Internal ID']),
+            "customer_internal_id": parseId(record['customer_internal_id']) || index + 1,
+            "number": parseId(record['number']),
+            "company_name": record['company_name'] || '',
+            "terms": record['terms'] || '',
+            "partner": record['partner'] || '',
+            "wholesale_customer_segment": record['wholesale_customer_segment'] || '',
+            "price_level": record['price_level'] || '',
+            "account_rating": record['account_rating'] || '',
+            "email": record['email'] || '',
+            "phone": record['phone'] || '',
+            "default_billing_address": record['default_billing_address'] || '',
+            "default_shipping_address": record['default_shipping_address'] || '',
+            "tw_email_of_primary_contact": record['tw_email_of_primary_contact'] || '',
+            "tw_email_of_billing_contact": record['tw_email_of_billing_contact'] || '',
+            "tw_email_of_billing_contact_2": record['tw_email_of_billing_contact_2'] || '',
+            "primary_currency": record['primary_currency'] || '',
+            "hold_orders_for_cc_info": record['hold_orders_for_cc_info'] || '',
+            "ar_red_flag": record['ar_red_flag'] || '',
+            "partner_internal_id": parseId(record['partner_internal_id']),
             "timestamp": new Date().toISOString()
           };
         });
@@ -177,84 +175,84 @@ class SyncManager {
       case 'invoices':
         return rawRecords.map((record, index) => {
           return {
-            "Internal ID": parseId(record['Internal ID']),
-            "Date": record.Date || null,
-            "Document Number": record['Document Number'] || '',
-            "PO/Check Number": record['PO/Check Number'] || '',
-            "NuOrder Order #": record['NuOrder Order #'] || '',
-            "Created From": record['Created From'] || '',
-            "Name": record.Name || '',
-            "Amount": parseNumber(record.Amount),
-            "Status": record.Status || '',
-            "Customer Internal ID": parseId(record['Customer Internal ID']),
-            "Sales Order Internal ID": parseId(record['Sales Order Internal ID']),
-            "Payment Link": record['Payment Link'] || '',
-            "Partner Internal ID": parseId(record['Partner Internal ID']),
+            "invoice_internal_id": parseId(record['invoice_internal_id']) || index + 1,
+            "date": record['date'] || null,
+            "document_number": record['document_number'] || '',
+            "po_number": record['po_number'] || '',
+            "nuorder_order_number": record['nuorder_order_number'] || '',
+            "created_from": record['created_from'] || '',
+            "name": record['name'] || '',
+            "amount": parseNumber(record['amount']),
+            "status": record['status'] || '',
+            "customer_internal_id": parseId(record['customer_internal_id']),
+            "sales_order_internal_id": parseId(record['sales_order_internal_id']),
+            "payment_link": record['payment_link'] || '',
+            "partner_internal_id": parseId(record['partner_internal_id']),
             "timestamp": new Date().toISOString(),
-            "Due Date":  record['Due Date'] || '',
+            "due_date": record['due_date'] || null
           };
         });
         
-      case 'invoices-detailed':
+      case 'invoices_detailed':
         return rawRecords.map((record, index) => {
           return {
-            "Internal ID": parseId(record['Internal ID']),
-            "Date": record.Date || null,
-            "Document Number": record['Document Number'] || '',
-            "PO/Check Number": record['PO/Check Number'] || '',
-            "NuOrder Order #": record['NuOrder Order #'] || '',
-            "Name": record.Name || '',
-            "Status": record.Status || '',
-            "Item Name": record['Item Name'] || '',
-            "Design": record['Design'] || '',
-            "Class": record['Class'] || '',
-            "UPC Code": record['UPC Code'] || '',
-            "Quantity": parseId(record['Quantity']),
-            "Amount": parseNumber(record.Amount),
-            "Customer Internal ID": parseId(record['Customer Internal ID']),
-            "Sales Order #": record['Sales Order #'] || record['Created From'] || '',
-            "Sales Order Internal ID": parseId(record['Sales Order Internal ID']),
-            "pkey": parseId(record['pkey']),
-            "SKU": record['SKU'] || '',
+            "invoice_internal_id": parseId(record['invoice_internal_id']),
+            "date": record['date'] || null,
+            "document_number": record['document_number'] || '',
+            "po_number": record['po_number'] || '',
+            "nuorder_order_number": record['nuorder_order_number'] || '',
+            "name": record['name'] || '',
+            "status": record['status'] || '',
+            "item_name": record['item_name'] || '',
+            "design": record['design'] || '',
+            "class": record['class'] || '',
+            "upc_code": record['upc_code'] || '',
+            "quantity": parseId(record['quantity']),
+            "amount": parseNumber(record['amount']),
+            "customer_internal_id": parseId(record['customer_internal_id']),
+            "sales_order_number": record['sales_order_number'] || record['created_from'] || '',
+            "sales_order_internal_id": parseId(record['sales_order_internal_id']),
+            "pkey": parseId(record['pkey']) || `${parseId(record['invoice_internal_id']) || index + 1}_${parseId(record['line_id']) || index + 1}`,
+            "sku": record['sku'] || '',
             "timestamp": new Date().toISOString()
           };
         });
         
-      case 'item-fulfillments':
+      case 'item_fulfillments':
         return rawRecords.map((record, index) => {
           return {
-            "Internal ID": parseId(record['Internal ID']),
-            "Date": record.Date || null,
-            "Document Number": record['Document Number'] || '',
-            "Created From": record['Created From'] || '',
-            "NuOrder Order #": record['NuOrder Order #'] || '',
-            "PO/Check Number": record['PO/Check Number'] || '',
-            "Name": record.Name || '',
-            "Amount": parseNumber(record.Amount),
-            "Status": record.Status || '',
-            "Tracking Numbers": record['Tracking Numbers'] || '',
-            "Sales Order Internal ID": parseId(record['Sales Order Internal ID']),
-            "Customer Internal ID": parseId(record['Customer Internal ID']),
+            "item_fulfillment_internal_id": parseId(record['item_fulfillment_internal_id']) || index + 1,
+            "date": record['date'] || null,
+            "document_number": record['document_number'] || '',
+            "created_from": record['created_from'] || '',
+            "nuorder_order_number": record['nuorder_order_number'] || '',
+            "po_check_number": record['po_check_number'] || '',
+            "name": record['name'] || '',
+            "amount": parseNumber(record['amount']),
+            "status": record['status'] || '',
+            "tracking_numbers": record['tracking_numbers'] || '',
+            "sales_order_internal_id": parseId(record['sales_order_internal_id']),
+            "customer_internal_id": parseId(record['customer_internal_id']),
             "timestamp": new Date().toISOString()
           };
         });
         
-      case 'item-fulfillments-detailed':
+      case 'item_fulfillments_detailed':
         return rawRecords.map((record, index) => {
           return {
-            "Internal ID": parseId(record['Internal ID']),
-            "Date": record.Date || null,
-            "Document Number": record['Document Number'] || '',
-            "Name": record.Name || '',
-            "Status": record.Status || '',
-            "Item Name": record['Item Name'] || '',
-            "Design": record['Design'] || '',
-            "Class": record['Class'] || '',
-            "UPC Code": record['UPC Code'] || '',
-            "Quantity": parseId(record['Quantity']),
-            "pkey": parseId(record['pkey']),
-            "SKU": record['SKU'] || '',
-            "Customer Internal ID": parseId(record['Customer Internal ID']),
+            "item_fulfillment_internal_id": parseId(record['item_fulfillment_internal_id']),
+            "date": record['date'] || null,
+            "document_number": record['document_number'] || '',
+            "name": record['name'] || '',
+            "status": record['status'] || '',
+            "item_name": record['item_name'] || '',
+            "design": record['design'] || '',
+            "class": record['class'] || '',
+            "upc_code": record['upc_code'] || '',
+            "quantity": parseId(record['quantity']),
+            "pkey": parseId(record['pkey']) || `${parseId(record['item_fulfillment_internal_id']) || index + 1}_${parseId(record['line_id']) || index + 1}`,
+            "sku": record['sku'] || '',
+            "customer_internal_id": parseId(record['customer_internal_id']),
             "timestamp": new Date().toISOString()
           };
         });
@@ -262,57 +260,57 @@ class SyncManager {
       case 'partners':
         return rawRecords.map((record, index) => {
           return {
-            "Internal ID": parseId(record['Internal ID']) || index + 1,
-            "Name": record.Name || '',
-            "Email": record.Email || '',
-            "Phone": record.Phone || '',
-            "Office Phone": record['Office Phone'] || '',
-            "Fax": record.Fax || '',
-            "Code": record.Code || '',
-            "Alt. Email": record['Alt. Email'] || '',
+            "partner_internal_id": parseId(record['partner_internal_id']) || index + 1,
+            "name": record['name'] || '',
+            "email": record['email'] || '',
+            "phone": record['phone'] || '',
+            "office_phone": record['office_phone'] || '',
+            "fax": record['fax'] || '',
+            "code": record['code'] || '',
+            "alt_email": record['alt_email'] || '',
             "timestamp": new Date().toISOString()
           };
         });
         
-      case 'sales-orders':
+      case 'sales_orders':
         return rawRecords.map((record, index) => {
           return {
-            "Internal ID": parseId(record['Internal ID']),
-            "Date": record.Date || null,
-            "Document Number": record['Document Number'] || '',
-            "PO/Check Number": record['PO/Check Number'] || '',
-            "NuOrder Order #": record['NuOrder Order #'] || '',
-            "Customer Name": record['Customer Name'] || record.Name || '',
-            "Amount": parseNumber(record.Amount),
-            "Status": record.Status || '',
-            "Customer Internal ID": parseId(record['Customer Internal ID']),
-            "Ship Date": record['Ship Date'] || null,
-            "Ship Date End": record['Ship Date End'] || null,
-            "Partner Internal ID": parseId(record['Partner Internal ID']),
+            "sales_order_internal_id": parseId(record['sales_order_internal_id']) || index + 1,
+            "date": record['date'] || null,
+            "document_number": record['document_number'] || '',
+            "po_number": record['po_number'] || '',
+            "nuorder_order_number": record['nuorder_order_number'] || '',
+            "customer_name": record['customer_name'] || record['name'] || '',
+            "amount": parseNumber(record['amount']),
+            "status": record['status'] || '',
+            "customer_internal_id": parseId(record['customer_internal_id']),
+            "ship_date": record['ship_date'] || null,
+            "ship_date_end": record['ship_date_end'] || null,
+            "partner_internal_id": parseId(record['partner_internal_id']),
             "timestamp": new Date().toISOString()
           };
         });
         
-      case 'sales-data-detailed':
+      case 'sales_orders_detailed':
         return rawRecords.map((record, index) => {
           return {
-            "Internal ID": parseId(record['Internal ID']),
-            "Date": record.Date || null,
-            "Document Number": record['Document Number'] || '',
-            "PO/Check Number": record['PO/Check Number'] || '',
-            "NuOrder Order #": record['NuOrder Order #'] || '',
-            "Customer Name": record['Customer Name'] || record.Name || '',
-            "Status": record.Status || '',
-            "Item Name": record['Item Name'] || '',
-            "Design": record['Design'] || '',
-            "Class": record['Class'] || '',
-            "UPC Code": record['UPC Code'] || '',
-            "Quantity": parseId(record['Quantity']),
-            "Amount": parseNumber(record.Amount),
-            "Line ID": parseId(record['Line ID']),
-            "Customer Internal ID": parseId(record['Customer Internal ID']),
-            "pkey": parseId(record['pkey']),
-            "SKU": record['SKU'] || '',
+            "sales_order_internal_id": parseId(record['sales_order_internal_id']),
+            "date": record['date'] || null,
+            "document_number": record['document_number'] || '',
+            "po_number": record['po_number'] || '',
+            "nuorder_order_number": record['nuorder_order_number'] || '',
+            "customer_name": record['customer_name'] || record['name'] || '',
+            "status": record['status'] || '',
+            "item_name": record['item_name'] || '',
+            "design": record['design'] || '',
+            "class": record['class'] || '',
+            "upc_code": record['upc_code'] || '',
+            "quantity": parseId(record['quantity']),
+            "amount": parseNumber(record['amount']),
+            "line_id": parseId(record['line_id']),
+            "customer_internal_id": parseId(record['customer_internal_id']),
+            "pkey": parseId(record['pkey']) || `${parseId(record['sales_order_internal_id']) || index + 1}_${parseId(record['line_id']) || index + 1}`,
+            "sku": record['sku'] || '',
             "timestamp": new Date().toISOString()
           };
         });
@@ -320,10 +318,10 @@ class SyncManager {
       case 'forecast':
         return rawRecords.map((record, index) => {
           return {
-            "Month": record['Month'] || null,
-            "Sales Rep": record['Sales Rep'] || '',
-            "Forecasted Amount": parseNumber(record['Forecasted Amount']),
-            "Partner ID": parseId(record['Partner ID']),
+            "month": record['month'] || null,
+            "partner": record['sales_rep'] || record['partner'] || '',
+            "forecasted_amount": parseNumber(record['forecasted_amount']),
+            "partner_internal_id": parseId(record['partner_internal_id'] || record['partner_id']),
             "pkey": parseId(record['pkey']) || index + 1
           };
         });
@@ -339,20 +337,20 @@ class SyncManager {
             const value = record[key];
             
             // Handle data types based on field names
-            if (key === 'Internal ID' || key.includes('Internal ID') || key.includes(' ID')) {
+            if (key.includes('internal_id') || key.includes('_id') || key === 'id') {
               processedRecord[key] = parseId(value);
-            } else if (key === 'Amount' || key.includes('Amount') || key.includes('Price') || key.includes('Total')) {
+            } else if (key.includes('amount') || key.includes('price') || key.includes('total')) {
               processedRecord[key] = parseNumber(value);
-            } else if (key === 'Date' || key.includes('Date')) {
+            } else if (key.includes('date')) {
               processedRecord[key] = value || null;
             } else {
               processedRecord[key] = value || '';
             }
           });
           
-          // Ensure Internal ID exists
-          if (!processedRecord['Internal ID']) {
-            processedRecord['Internal ID'] = index + 1;
+          // Ensure an ID exists for primary key
+          if (!processedRecord['id'] && !Object.keys(processedRecord).some(key => key.includes('internal_id'))) {
+            processedRecord['id'] = index + 1;
           }
           
           // Add timestamp
@@ -387,7 +385,35 @@ class SyncManager {
           const processedRecords = this.processRecordsForTable(table, pageData);
           this.log(`Processing page ${pageIndex} with ${processedRecords.length} records for ${table}`);
           
-          const conflictKey = "pkey";
+          // Determine which conflict key to use (same logic as syncMapping)
+          let conflictKey = this.getTableIdColumn(table);
+          
+          // Use pkey as conflict key for these specific tables
+          if (table === 'sales_orders_detailed' || table === 'invoices_detailed' || table === 'item_fulfillments_detailed') {
+            conflictKey = "pkey";
+            
+            // Verify that pkey is present and properly formatted
+            if (processedRecords.length > 0) {
+              const samplePkey = processedRecords[0][conflictKey];
+              this.log(`Sample ${conflictKey}: ${samplePkey} (type: ${typeof samplePkey})`);
+              
+              if (samplePkey === null || samplePkey === undefined) {
+                this.log(`WARNING: ${conflictKey} is missing in processed records for ${table}`);
+              }
+            }
+          } else {
+            // Verify that the table ID is present and properly formatted
+            if (processedRecords.length > 0) {
+              const sampleId = processedRecords[0][conflictKey];
+              this.log(`Sample ${conflictKey}: ${sampleId} (type: ${typeof sampleId})`);
+              
+              if (sampleId === null || sampleId === undefined) {
+                this.log(`WARNING: ${conflictKey} is missing in processed records for ${table}`);
+              }
+            }
+          }
+          
+          this.log(`Upserting page ${pageIndex} with ${processedRecords.length} records to ${table} using "${conflictKey}" as conflict key...`);
           const result = await supabaseClient.upsert(table, processedRecords, conflictKey);
           
           totalRecordsProcessed += processedRecords.length;
@@ -458,10 +484,10 @@ class SyncManager {
         this.log(`Sample processed record: ${JSON.stringify(processedRecords[0], null, 2)}`);
         
         // Determine which conflict key to use
-        let conflictKey = "Internal ID"; // Default
+        let conflictKey = this.getTableIdColumn(table);
         
         // Use pkey as conflict key for these specific tables
-        if (table === 'sales-data-detailed' || table === 'invoices-detailed' || table === 'item-fulfillments-detailed') {
+        if (table === 'sales_orders_detailed' || table === 'invoices_detailed' || table === 'item_fulfillments_detailed') {
           conflictKey = "pkey";
           
           // Verify that pkey is present and properly formatted
@@ -472,12 +498,12 @@ class SyncManager {
             this.log(`WARNING: ${conflictKey} is missing in processed records for ${table}`);
           }
         } else {
-          // Verify that Internal ID is present and properly formatted
-          const sampleId = processedRecords[0]['Internal ID'];
-          this.log(`Sample Internal ID: ${sampleId} (type: ${typeof sampleId})`);
+          // Verify that the table ID is present and properly formatted
+          const sampleId = processedRecords[0][conflictKey];
+          this.log(`Sample ${conflictKey}: ${sampleId} (type: ${typeof sampleId})`);
           
           if (sampleId === null || sampleId === undefined) {
-            this.log(`WARNING: Internal ID is missing in processed records for ${table}`);
+            this.log(`WARNING: ${conflictKey} is missing in processed records for ${table}`);
           }
         }
 
@@ -546,6 +572,29 @@ class SyncManager {
     }
 
     return this.syncStats;
+  }
+
+  /**
+   * Gets the primary ID column name for a specific table
+   * @param {string} table - The table name
+   * @returns {string} The ID column name for the table
+   */
+  getTableIdColumn(table) {
+    const tableIdMap = {
+      'cash_sales': 'cash_sale_internal_id',
+      'credit_memos': 'credit_memo_internal_id', 
+      'customers': 'customer_internal_id',
+      'invoices': 'invoice_internal_id',
+      'invoices_detailed': 'invoice_internal_id',
+      'item_fulfillments': 'item_fulfillment_internal_id',
+      'item_fulfillments_detailed': 'item_fulfillment_internal_id',
+      'partners': 'partner_internal_id',
+      'sales_orders': 'sales_order_internal_id',
+      'sales_orders_detailed': 'sales_order_internal_id',
+      'forecast': 'pkey' // Forecast uses pkey as primary key
+    };
+    
+    return tableIdMap[table] || 'id'; // Default fallback
   }
 }
 

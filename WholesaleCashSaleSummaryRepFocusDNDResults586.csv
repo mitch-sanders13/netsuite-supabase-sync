@@ -1,0 +1,7 @@
+Internal ID,cash_sale_internal_id,date,document_number,po_number,nuorder_order_number,created_from,name,amount,status,customer_internal_id,sales_order_internal_id,partner_internal_id
+22723743,22723743,4/17/25,CS1522110,,199143757,SO1851264,evergreen clothing and mercantile,316.5,Not Deposited,3322622,22722073,111162
+22712823,22712823,4/14/25,CS1520900,Thread 4.11,190004286-1,SO1847071,Old Naples Surf Shop,746,Not Deposited,438084,22702876,1045
+22650207,22650207,3/28/25,CS1507175,,196090022,SO1832175,Catalyst Florida,435,Not Deposited,1797797,22647550,1045
+22646614,22646614,3/27/25,CS1506960,o6-hawaii,195780487,SO1831262,Mary Jane's Hawaii,375.87,Not Deposited,96487,22644835,4594925
+22601492,22601492,3/12/25,CS1503230,,193943985,SO1819461,Mary Jane's Colorado,369,Not Deposited,96488,22600787,111162
+22499864,22499864,2/18/25,CS1478607,Thread SP25 2.15,182609508,SO1808903,Old Naples Surf Shop,912,Not Deposited,438084,22497452,1045

@@ -28,7 +28,7 @@
       "searchId": "2012",
       "type": "Transaction",
       "name": "Wholesale Invoices Detailed *Rep Focus* DND",
-      "table": "invoices-detailed",
+      "table": "invoices_detailed",
       "method": "upsert",
       "createdBy": "Mitch Sanders"
     },
@@ -44,7 +44,7 @@
       "searchId": "2015",
       "type": "Transaction",
       "name": "Wholesale Item Fulfillments Detailed *Rep Focus* DND",
-      "table": "item-fulfillments-detailed",
+      "table": "item_fulfillments_detailed",
       "method": "upsert",
       "createdBy": "Mitch Sanders"
     },
@@ -52,7 +52,7 @@
       "searchId": "2014",
       "type": "Transaction",
       "name": "Wholesale Item Fulfillments Summary *Rep Focus* DND",
-      "table": "item-fulfillments",
+      "table": "item_fulfillments",
       "method": "upsert",
       "createdBy": "Mitch Sanders"
     },
@@ -69,7 +69,7 @@
       "searchId": "2011",
       "type": "Transaction",
       "name": "Wholesale Sales Orders Detailed *Rep Focus* DND",
-      "table": "sales-data-detailed",
+      "table": "sales_orders_detailed",
       "method": "upsert",
       "createdBy": "Mitch Sanders"
     },
@@ -77,7 +77,7 @@
       "searchId": "2010",
       "type": "Transaction",
       "name": "Wholesale Sales Orders Summary *Rep Focus* DND",
-      "table": "sales-orders",
+      "table": "sales_orders",
       "method": "upsert",
       "createdBy": "Mitch Sanders"
     }
